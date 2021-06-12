@@ -4,13 +4,13 @@ const express = require('express');
 
 const app = express();
 
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
 
-express.static('./public');
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/', (req, res) => {
-  res.render(path.join(__dirname, 'views/index'), { title: 'Index'});
+  res.render('index', { title: 'Index'});
 });
 
 const port = 3000;
